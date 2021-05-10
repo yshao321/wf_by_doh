@@ -1,4 +1,10 @@
 #!/bin/bash
+# 
+# This is a script to process DNS-over-HTTPS traffic
+# 
+# - process .pcap in collection
+# - process stdin from pipe
+# 
 
 DOH_SVR_IP_1="104.16.248.249"
 DOH_SVR_IP_2="104.16.249.249"
@@ -40,7 +46,7 @@ process_stdin () {
 		site_data="{ \n\n\"0\" : { \"lengths\" : [ "
 		site_valid=0
 
-		# Analyze real-time data when no record for 3 seconds ==> predict fast
+		# Analyze real-time data when no record for 5 seconds ==> predict fast
 		while read -t 5 line; do
 			echo -n "." >&2
 			parse_line

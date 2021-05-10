@@ -8,6 +8,9 @@
 # - DoH server  : mozilla.cloudflare-dns.com
 # 
 
+# Enter sudo password
+read -sp 'Enter sudo password: ' PASSWORD
+
 # How many samples to be collected for each website
 HOWMANY_SAMPLES=10
 
@@ -23,7 +26,7 @@ TCPDUMP_FILTERS='(host 104.16.248.249 or host 104.16.249.249) and (port 443)'
 
 # If a pipe exists on stdout, it is for real-time prediction
 if [ -p /dev/stdout ]; then
-  echo "resu" | sudo -S tcpdump -l -i eth0 $TCPDUMP_FILTERS --immediate-mode
+  echo $PASSWORD | sudo -S tcpdump -l -i eth0 $TCPDUMP_FILTERS --immediate-mode
   exit 1
 fi
 
@@ -48,7 +51,7 @@ do
     sleep $FIREFOX_STANDBY
 
     # Start traffic collection
-    echo "resu" | sudo -S tcpdump -U -i eth0 $TCPDUMP_FILTERS -w ../collection/$current_date_time/$line.pcap &
+    echo $PASSWORD | sudo -S tcpdump -U -i eth0 $TCPDUMP_FILTERS -w ../collection/$current_date_time/$line.pcap &
     sleep $TCPDUMP_STANDBY
     
     # Open a tab in firefox
