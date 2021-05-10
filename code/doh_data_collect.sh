@@ -8,9 +8,6 @@
 # - DoH server  : mozilla.cloudflare-dns.com
 # 
 
-# Enter sudo password
-read -sp 'Enter sudo password: ' PASSWORD
-
 # How many samples to be collected for each website
 HOWMANY_SAMPLES=10
 
@@ -23,6 +20,9 @@ TCPDUMP_CLOSING=5
 
 # Tcpdump packet filter
 TCPDUMP_FILTERS='(host 104.16.248.249 or host 104.16.249.249) and (port 443)'
+
+# Enter sudo password
+read -sp 'Enter sudo password: ' PASSWORD
 
 # If a pipe exists on stdout, it is for real-time prediction
 if [ -p /dev/stdout ]; then
@@ -59,7 +59,7 @@ do
     sleep $FIREFOX_SURFING
 
     # Stop traffic collection
-    sudo pkill -f tcpdump
+    echo $PASSWORD | sudo -S pkill -f tcpdump
     sleep $TCPDUMP_CLOSING
 
     # Close firefox (clean DNS cache)

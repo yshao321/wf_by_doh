@@ -2,9 +2,6 @@
 # 
 # This is a script to process DNS-over-HTTPS traffic
 # 
-# - process .pcap in collection
-# - process stdin from pipe
-# 
 
 DOH_SVR_IP_1="104.16.248.249"
 DOH_SVR_IP_2="104.16.249.249"
