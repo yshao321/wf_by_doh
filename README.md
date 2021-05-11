@@ -2,7 +2,7 @@
 Traditional website fingerprinting is to analyze the encrypted traffic between a user and a web server, but the DoH based website fingerprinting is to analyze the encrypted traffic between a user and a DoH server. It can be treated as a supervised learning problem: collect samples of DoH traffic with correct label, and train a model, then deploy the model for prediction. 
 
 **Data Collection**
->  The Alexa top 500 U.S. sites (see Appendix A) are used, and 10 samples of DoH traffic for each site are collected under the Kali VM environment (Firefox with DoH enabled) and Cloudflare DoH server mozilla.cloudflare-dns.com (104.16.248.249 and 104.16.249.249) from April 1st, 2021 to April 8th, 2021. 
+>  The Alexa top 500 U.S. [websites](/collection/websites.txt) are used, and 10 samples of DoH traffic for each site are collected under the Kali VM environment (Firefox with DoH enabled) and Cloudflare DoH server mozilla.cloudflare-dns.com (104.16.248.249 and 104.16.249.249) from April 1st, 2021 to April 8th, 2021. 
 
 **Data Preprocess**
 > The 10 samples of 500 pcap files are pre-processed, and the TCP segment length and direction information are extracted from the pcap files. These information of each website are encoded into a JSON buffer and saved into a .json file for each sample. 
