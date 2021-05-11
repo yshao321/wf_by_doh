@@ -13,7 +13,7 @@ Traditional website fingerprinting is to analyze the encrypted traffic between a
 **Model Prediction**
 > The best pre-trained model is chosen and deployed into test environment (Kali VM). The real-time collected and processed data is saved into a temp file, and the name of the temp file is sent to the prediction module via pipe. Then the prediction module will read the real-time data from the temp file, make a prediction with the model, and convert the predicted label to a website domain name. 
 
-This diagram covers the main software components. To train the model, the labelled traffic goes from left to right (top) and produce a model and results. To serve the model, the unknown traffic goes from left to right (bottom) and predict website domain names.
+This diagram covers the main software components. While training the model, the labelled traffic goes from left to right (top) and produces the models and results. While serving the model, the unknown traffic goes from left to right (bottom) and generates the prediction of websites. 
 ![Summary](/docs/summary.jpg)
 
 To train the model, run **./doh_data_collect.sh ; ./doh_data_process.sh ; ./doh_data_classify.py train**
